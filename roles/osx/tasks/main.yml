@@ -1,0 +1,8 @@
+# Apple Mac caches defaults. You may need to logout and login to apply the changes.
+
+---
+- name: Dock Settings
+  include_tasks: "{{ item }}"
+  loop:
+    - dock.yml
+    - keyboard.yml

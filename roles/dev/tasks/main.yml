@@ -1,0 +1,10 @@
+# Install and configure dev tools
+
+---
+- name: Install applications
+  include_tasks: "{{ item }}"
+  loop:
+    - git.yml
+    # - iterm.yml
+    # - vscode.yml
+    # - nvim.yml

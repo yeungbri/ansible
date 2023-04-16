@@ -1,0 +1,5 @@
+# Remove inventory warning messages
+# This is like a hosts file
+
+[all]
+localhost ansible_connection=local

@@ -1,0 +1,28 @@
+# Core applications
+# cask "karabiner-elements"
+
+---
+- name: Brew install
+  community.general.homebrew:
+    name:
+      - fzf
+    state: latest
+    update_homebrew: yes
+
+- name: Brew install casks
+  community.general.homebrew_cask:
+    name:
+      - keepingyouawake
+      # Mouse
+      - linearmouse # no mouse accel
+      - mos         # smooth scrolling
+      # Menu Bar
+      - hiddenbar
+      - meetingbar
+      # Window management
+      - rectangle
+      - quicksilver 
+      # Utility
+      - licecap
+      - postman
+    state: latest

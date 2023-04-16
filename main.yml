@@ -1,0 +1,22 @@
+# This is a playbook. Each item is called a play.
+
+---
+- name: Setup MacOS dev env
+  hosts: localhost
+  connection: local
+  # facts about hosts, not necessary for local
+  gather_facts: false 
+
+  tasks:
+    # - name: OSX settings
+    #   include_role:
+    #     name: osx
+    # - name: Install applications
+    #   include_role:
+    #     name: apps
+    # - name: Setup browser
+    #   include_role:
+    #     name: browser
+    - name: Setup devenv
+      include_role:
+        name: dev

@@ -1,0 +1,26 @@
+# Extensions are found in https://developer.chrome.com/docs/extensions/mv3/external_extensions/#preference-mac
+
+# Should be placed in: ~/Library/Application Support/Google/Chrome/External Extensions
+# A json file must be created with the extension id.
+# Inside you must place 
+# {
+#     "external_update_url": "https://clients2.google.com/service/update2/crx"
+# }
+
+# Chrome must be restarted for extensions to be installed/take effect
+
+---
+- name: Creates directory for extensions
+  file:
+    path: "~/Library/Application Support/Google/Chrome/External Extensions/"
+    state: directory
+- name: Install Google chrome extensions
+  copy:
+    dest: "~/Library/Application Support/Google/Chrome/External Extensions/{{ item }}.json"
+    content: |
+      {
+          "external_update_url": "https://clients2.google.com/service/update2/crx"
+      }
+  with_items:
+    - dbepggeogbaibhgnhhndojpepiihcmeb # vimium
+    - cjpalhdlnbpafiamejdnhcphjbkeiagm # ublock origin

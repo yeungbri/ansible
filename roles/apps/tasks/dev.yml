@@ -1,0 +1,28 @@
+# Apps for development
+
+---
+- name: Brew install dev utilities
+  community.general.homebrew:
+    name:
+      - fzf
+      - bat
+      - cloc
+      - fd
+      - cmake
+      - coreutils
+    state: latest
+    update_homebrew: yes
+
+- name: Brew install dev apps
+  community.general.homebrew:
+    name:
+      - direnv
+    state: latest
+    update_homebrew: yes
+
+- name: Brew install dev casks
+  community.general.homebrew_cask:
+    name:
+      - licecap
+      - postman
+    state: latest

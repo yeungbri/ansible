@@ -1,0 +1,10 @@
+---
+# Generate an OpenSSH keypair with the default values (4096 bits, rsa)
+# Uses the openssh_keypair role
+# Will not regenerate if exists by default
+
+- name: Generate ssh key
+  openssh_keypair:
+    path: ~/.ssh/id_rsa
+
+# - name: Configure git config

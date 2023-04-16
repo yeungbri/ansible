@@ -1,0 +1,5 @@
+---
+- name: Install applications
+  include_tasks: "{{ item }}"
+  loop:
+    - google_chrome.yml

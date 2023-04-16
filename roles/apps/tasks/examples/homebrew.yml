@@ -1,0 +1,17 @@
+# Example of homebrew
+
+---
+# - name: Brew install
+#   community.general.homebrew:
+#     name:
+#       - fzf
+#       - bat
+#     state: latest
+#     update_homebrew: yes
+
+# - name: Brew install casks
+#   community.general.homebrew_cask:
+#     name:
+#       - rectangle
+#       - quicksilver
+#     state: latest

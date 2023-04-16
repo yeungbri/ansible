@@ -1,0 +1,8 @@
+# brew install mas is required to work
+
+---
+# - name: Mac app store install
+#   community.general.mas:
+#     id:
+#       - 1440147259 # Adguard
+#     state: latest
