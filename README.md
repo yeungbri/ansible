@@ -42,6 +42,7 @@ Each main.yml file in each role is the main "playbook" of the role. When you inv
 - [ ] Usage of tags for more targetted installs
 - [ ] Testing on a macos fresh VM
   https://mac.getutm.app/
+- [ ] Look into ansible vault for secrets - not sure if I have any
 
 ---
 

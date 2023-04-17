@@ -5,11 +5,16 @@
   community.general.homebrew:
     name:
       - fzf
+      # Better cat
       - bat
       - cloc
       - fd
       - cmake
       - coreutils
+      # Zsh plugin manager
+      - antigen
+      # Zsh theme
+      - starship
     state: latest
     update_homebrew: yes
 
