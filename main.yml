@@ -8,13 +8,13 @@
   # gather_facts: false 
 
   tasks:
-    - name: OSX settings
-      include_role:
-        name: osx
-
     - name: Install applications
       include_role:
         name: apps
+
+    - name: OSX settings
+      include_role:
+        name: osx
 
     - name: Setup browser
       include_role:

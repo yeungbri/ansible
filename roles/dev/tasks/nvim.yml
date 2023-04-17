@@ -6,9 +6,8 @@
       - tmux
     state: latest
 
-- name: Install
-  community.general.homebrew:
-    name:
-      - iterm2
-      - starship
-    state: latest
+# - name: Install
+#   community.general.homebrew:
+#     name:
+#       - 
+#     state: latest

@@ -7,11 +7,11 @@
   community.general.osx_defaults:
     domain: com.apple.menuextra.clock
     key: ShowDate
-    type: boolean
-    value: true
+    type: int
+    value: 1
     state: present
 
-- name: Always show date
+- name: Always show date (format)
   community.general.osx_defaults:
     domain: com.apple.menuextra.clock
     key: DateFormat

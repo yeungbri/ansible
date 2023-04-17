@@ -39,6 +39,7 @@ Each main.yml file in each role is the main "playbook" of the role. When you inv
 
 ## Improvements
 - [ ] More robust ansible tasks -> making use of checks/handlers/variables
+  - [ ] For script tasks, write a check so it can be skipped if already configured (might not be worth the time)
 - [ ] Usage of tags for more targetted installs
 - [ ] Testing on a macos fresh VM
   https://mac.getutm.app/

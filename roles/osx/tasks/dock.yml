@@ -91,5 +91,11 @@
       - name: Visual Studio Code
         path: "/Applications/Visual Studio Code.app/"
         pos: 3
+      - name: iTerm
+        path: "/Applications/iTerm.app/"
+      - name: obsidian
+        path: "/Applications/obsidian.app/"
+      - name: Slack
+        path: "/Applications/Slack.app/"
   include_role:
     name: geerlingguy.mac.dock

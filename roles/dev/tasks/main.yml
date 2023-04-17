@@ -2,12 +2,11 @@
 
 ---
 - name: Install applications
-  include_tasks: "{{ item }}"
+  include_tasks: "{{ yml_files }}"
   loop:
     - nerdfonts.yml
     - zsh.yml
     - git.yml
-    - iterm.yml
     - vscode.yml
 
     # WIP
@@ -15,3 +14,5 @@
 
     # Deprecated
     # - oh_my_zsh.yml
+  loop_control:
+    loop_var: yml_files

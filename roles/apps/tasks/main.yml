@@ -1,3 +1,4 @@
+# fileglob
 # When you specify a relative path for a local file, Ansible will try to find 
 # that file first in the current task’s role, then in other roles that 
 # included or depend on the current role, then relative to the file in which 
@@ -8,8 +9,10 @@
 
 ---
 - name: Install applications
-  include_tasks: "{{ item }}"
+  include_tasks: "{{ yml_files }}"
   loop:
     - core.yml
     - dev.yml
     - configure.yml
+  loop_control:
+    loop_var: yml_files

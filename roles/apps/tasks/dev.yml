@@ -30,7 +30,9 @@
     name:
       - iterm2
       - visual-studio-code
-      - slack
+      - obsidian
+      # Sometimes comes installed
+      # - slack
       - licecap
       - postman
     state: latest

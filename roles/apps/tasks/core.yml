@@ -12,6 +12,7 @@
 - name: Brew install casks
   community.general.homebrew_cask:
     name:
+      # If you install it manually it breaks this
       - google-chrome
 
       # Utilities
