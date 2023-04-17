@@ -72,7 +72,7 @@ If you want to run a specific tag, use --start-at-task:
 ansible-playbook main.yml --ask-become-pass --start-at-task "asdf"
 
 Language specific installs
-ansible-playbook main.yml --ask-become-pass --vars python,java,node
+ansible-playbook main.yml --ask-become-pass --extra-vars "langs=[python,java]"
 ```
 
 ---

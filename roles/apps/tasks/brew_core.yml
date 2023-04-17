@@ -27,3 +27,4 @@
         - licecap            # gif maker
         - karabiner-elements # key rebinder
       state: latest
+  tags: install

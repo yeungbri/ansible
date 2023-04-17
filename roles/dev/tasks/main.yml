@@ -7,20 +7,25 @@
 - name: Install fonts
   block:
     - import_tasks: nerdfonts.yml
+  tags: install
 
 - name: Install dev applications
   import_tasks: brew_dev.yml
+  tags: install
 
 - name: Configure dev applications
   block:
     - import_tasks: vscode.yml
     # - import_tasks: nvim.yml   
 
+# langs are defined in main playbook under the dev role invocation
 - name: Setup languages
   block:
     - import_tasks: python.yml
+      when: "'python' in langs"
+    # - debug: msg="python in langs"
+    #   when: "'python' in langs"
 
 - name: Setup CLI
   block:
     - import_tasks: git.yml
-    - import_tasks: zsh.yml
