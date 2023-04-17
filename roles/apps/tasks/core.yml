@@ -2,16 +2,19 @@
 # cask "karabiner-elements"
 
 ---
-- name: Brew install
-  community.general.homebrew:
-    name:
-      - fzf
-    state: latest
-    update_homebrew: yes
+# - name: Brew install
+#   community.general.homebrew:
+#     name:
+#       - 
+#     state: latest
+#     update_homebrew: yes
 
 - name: Brew install casks
   community.general.homebrew_cask:
     name:
+      - google-chrome
+
+      # Utilities
       - keepingyouawake
       # Mouse
       - linearmouse # no mouse accel

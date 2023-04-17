@@ -1,0 +1,35 @@
+
+---
+# defaults write "com.apple.menuextra.clock" "DateFormat" '"EEE MMM d  h:mm a"'
+# defaults write "com.apple.menuextra.clock" "ShowDate" '1'
+
+- name: Always show date
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: ShowDate
+    type: boolean
+    value: true
+    state: present
+
+- name: Always show date
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: DateFormat
+    # Default type is string
+    # type: string
+    value: '"EEE MMM d  h:mm a"'
+    state: present
+
+# defaults delete "com.apple.Spotlight" "NSStatusItem Preferred Position Item-0"
+# defaults delete "com.apple.Spotlight" "NSStatusItem Visible Item-0"
+- name: Disable spotlight icon in menubar
+  community.general.osx_defaults:
+    domain: com.apple.Spotlight
+    key: "NSStatusItem Preferred Position Item-0"
+    state: absent
+
+- name: Disable spotlight icon in menubar
+  community.general.osx_defaults:
+    domain: com.apple.Spotlight
+    key: "NSStatusItem Visible Item-0"
+    state: absent

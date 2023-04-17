@@ -7,4 +7,8 @@
   openssh_keypair:
     path: ~/.ssh/id_rsa
 
+- name: Generate ssh key
+  openssh_keypair:
+    path: ~/.ssh/gitlab
+
 # - name: Configure git config

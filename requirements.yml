@@ -1,5 +1,7 @@
 ---
 roles:
+  - name: gantsign.oh-my-zsh
 
 collections:
+  - name: community.general
   - name: geerlingguy.mac

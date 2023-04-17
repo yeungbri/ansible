@@ -1,0 +1,15 @@
+# Turns on nightshift by using a rust crate
+# https://github.com/smudge/nightlight
+
+---
+- name: Brew install nightshift cli
+  community.general.homebrew:
+    name:
+      - smudge/smudge/nightlight
+    state: latest
+
+- name: Turn nightshift on
+  shell: |
+    nightlight on
+    nightlight temp 70
+    nightlight schedule start

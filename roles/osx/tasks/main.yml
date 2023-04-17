@@ -1,8 +1,12 @@
 # Apple Mac caches defaults. You may need to logout and login to apply the changes.
+# You can use plistwatch (requires go) to show the plist changes
 
 ---
 - name: Dock Settings
   include_tasks: "{{ item }}"
   loop:
-    - dock.yml
     - keyboard.yml
+    - trackpad.yml
+    - display.yml
+    - dock.yml
+    - menubar.yml

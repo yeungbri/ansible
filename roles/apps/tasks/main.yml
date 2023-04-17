@@ -12,3 +12,4 @@
   loop:
     - core.yml
     - dev.yml
+    - configure.yml

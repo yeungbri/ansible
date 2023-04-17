@@ -1,0 +1,54 @@
+---
+- name: echo user
+  shell: echo {{ lookup('env', 'USER') }}
+  register: command_output
+- debug:
+    var: command_output.stdout_lines
+
+# - name: Install Oh My ZSH
+#   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#   args:
+#     creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
+
+# You have to pass the become pass (sudo) when running the playbook
+- name: Install oh my zsh
+  vars:
+    # Default theme
+    oh_my_zsh_theme: robbyrussell
+
+    # Default plugins
+    oh_my_zsh_plugins:
+      - git
+
+    # Whether to install by default for all specified users.
+    # May be overridden by `oh_my_zsh: install:` under each user.
+    oh_my_zsh_install: true
+
+    # Default update mode for Oh-My-Zsh
+    # accepted values are:
+    # disabled (default)
+    # auto
+    # reminder
+    oh_my_zsh_update_mode: disabled
+
+    # Default update frequency in days. When the update mode is set to a value other
+    # than "disabled", this is the frequency (in days) to check for a new version.
+    # The value 0 will check every time a new shell session starts.
+    oh_my_zsh_update_frequency: 13
+
+    # Whether to write the ~/.zshrc file
+    # May be overridden by `oh_my_zsh: write_zshrc:` under each user.
+    oh_my_zsh_write_zshrc: true
+
+    # User configuration
+    # Important: oh-my-zsh is installed per user so you need to specify the users to install it for.
+    users:
+      - username: "{{ lookup('env', 'USER') }}"
+        oh_my_zsh:
+          theme: robbyrussell
+          plugins:
+            - git
+          update_mode: disabled
+          write_zshrc: true
+  include_role: 
+    name: gantsign.oh-my-zsh

@@ -1,0 +1,9 @@
+---
+# defaults write "com.knollsoft.Rectangle" "hideMenubarIcon" '1'
+- name: Hide rectangle icon
+  community.general.osx_defaults:
+    domain: com.knollsoft.Rectangle
+    key: hideMenubarIcon
+    type: boolean
+    value: true
+    state: present

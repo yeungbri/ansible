@@ -1,0 +1,28 @@
+
+---
+# defaults write "Apple Global Domain" "com.apple.swipescrolldirection" '0'
+- name: Unnatural scroll direction
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: com.apple.swipescrolldirection
+    type: boolean
+    value: false
+    state: present
+
+# defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" "Clicking" '1'
+# defaults write "com.apple.AppleMultitouchTrackpad" "Clicking" '1'
+- name: Tap to click (bluetooth)
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: boolean
+    value: true
+    state: present
+
+- name: Tap to click
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: boolean
+    value: true
+    state: present

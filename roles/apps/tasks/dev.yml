@@ -23,6 +23,9 @@
 - name: Brew install dev casks
   community.general.homebrew_cask:
     name:
+      - iterm2
+      - visual-studio-code
+      - slack
       - licecap
       - postman
     state: latest
