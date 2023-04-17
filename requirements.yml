@@ -1,6 +1,5 @@
 ---
-roles:
-  - name: gantsign.oh-my-zsh
+# roles:
 
 collections:
   - name: community.general

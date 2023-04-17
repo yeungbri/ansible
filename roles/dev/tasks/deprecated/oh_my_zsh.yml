@@ -1,3 +1,5 @@
+# Using antigen over Oh-my-zsh
+
 ---
 - name: echo user
   shell: echo {{ lookup('env', 'USER') }}

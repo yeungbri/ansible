@@ -14,6 +14,7 @@
   file:
     path: "~/Library/Application Support/Google/Chrome/External Extensions/"
     state: directory
+
 - name: Install Google chrome extensions
   copy:
     dest: "~/Library/Application Support/Google/Chrome/External Extensions/{{ item }}.json"

@@ -1,0 +1,28 @@
+---
+- name: Brew install dev
+  block:
+  - name: Dev brews
+    community.general.homebrew:
+      name:
+        # CLI tools
+        - direnv # autoloads env vars per dir
+        - fzf
+        - bat # better cat
+        - fd
+        # zsh
+        - antigen  # zsh plugin manager
+        - starship # zsh theme
+        # build tools
+        - cloc
+        - cmake
+        - coreutils
+      state: latest
+      update_homebrew: yes
+  - name: Dev casks
+    community.general.homebrew_cask:
+      name:
+        - iterm2
+        - visual-studio-code
+        - obsidian
+        - postman
+      state: latest

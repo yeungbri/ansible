@@ -1,25 +1,32 @@
-# This is a playbook. Each item is called a play.
+# Master playbook
 
 ---
 - name: Setup MacOS dev env
   hosts: localhost
   connection: local
-  # facts about hosts - required for gantsign.oh-my-zsh
-  # gather_facts: false 
+  # Some roles may require this but faster startup without it
+  gather_facts: false 
 
   tasks:
-    - name: Install applications
+    - name: Install core applications
       include_role:
         name: apps
+        apply:
+          tags: core
+      tags: core
 
+    # ansible-playbook main.yml --start-at-task "OSX settings"
     - name: OSX settings
       include_role:
         name: osx
+        apply:
+          tags: core
+      tags: core
 
-    - name: Setup browser
-      include_role:
-        name: browser
-
-    - name: Setup devenv
+    # ansible-playbook main.yml --start-at-task "Setup developer environment"
+    - name: Setup developer environment
       include_role:
         name: dev
+        apply:
+          tags: dev
+      tags: dev

@@ -9,10 +9,11 @@
 
 ---
 - name: Install applications
-  include_tasks: "{{ yml_files }}"
-  loop:
-    - core.yml
-    - dev.yml
-    - configure.yml
-  loop_control:
-    loop_var: yml_files
+  import_tasks: brew_core.yml
+
+- name: Configure core applications
+  block:
+    - name: Configure rectangle
+      import_tasks: rectangle.yml
+    - name: Configure Google Chrome
+      import_tasks: google_chrome.yml

@@ -1,0 +1,59 @@
+# Usage
+# pyenv install 3.6 # Install a specific python version
+# cd project-dir/   # Run from project dir
+# pyenv-virtualenv 3.6 venv36 # Create a venv in the dir
+# pyenv local venv36 # notes venv in .python-version
+#     Should automatically swap to venv when you entire this dir or subdirs
+
+# Pyenv
+# Pyenv Version Selection Priority
+# 1. PYENV_VERSION env var (pyenv shell)
+# 2. .python-version in current directory (pyenv local)
+# 3. .python-version in any parent directory through to root
+# 4. global $(pyenv root)/version file (pyenv global)
+# 5. System Python, whichever python is found after the shims PATH entry
+# Check which executable is run: pyenv which <cmd>, pyenv which python3.7
+
+# pyenv-virtualenv
+# Create venv with current pyenv version: pyenv virtualenv venv
+# Create venv with specific version:      pyenv virtualenv 3.7 venv
+# Use the virtualenv: pyenv local venv
+#     This step is important for writing the venv into .python-version, 
+#     you only need this in there, no version - already tied to venv
+# Show list of existing virtualenvs and conda envs: pyenv virtualenvs
+#     Should automatically activate/deactivate virtualenvs that have a .python-version file
+# Manually activate: pyenv activate daisypi-venv
+# Manually deactivate: pyenv deactivate daisypi-venv
+
+---
+# Pyenv - allows install of diff python versions and switching between them
+# Pyenv-virtualenv - plugin to handle venvs as well
+# Python build deps: brew install openssl readline sqlite3 xz zlib tcl-tk
+- name: Install pyenv
+  community.general.homebrew:
+    name:
+      - pyenv
+      - pyenv-virtualenv
+      - openssl
+      - readline
+      - sqlite3
+      - xz
+      - zlib
+      - tcl-tk
+    state: latest
+
+# pyenv
+# echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+# echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+# echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+# for non interactive shells, add to ~/.zprofile
+
+# pyenv-virtualenv
+# Need to add to end of zshrc
+# echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+
+# We need to do this for each venv?
+# - name: Update pip
+#   shell: pip install --upgrade pip
+# - name: Update setuptools
+#   shell: pip install setuptools --upgrade

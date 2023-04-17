@@ -3,12 +3,11 @@
 # Uses the openssh_keypair role
 # Will not regenerate if exists by default
 
-- name: Generate ssh key
-  openssh_keypair:
-    path: ~/.ssh/id_rsa
-
-- name: Generate ssh key
-  openssh_keypair:
-    path: ~/.ssh/gitlab
-
-# - name: Configure git config
+- name: Generate ssh keys
+  block:
+  - name: Github
+    openssh_keypair:
+      path: ~/.ssh/github
+  - name: Gitlab
+    openssh_keypair:
+      path: ~/.ssh/gitlab

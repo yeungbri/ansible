@@ -57,12 +57,23 @@ Pros:
 Cons:
 - Shared dependencies are tricky
 - Lots of extra boiler plate to separate concerns even when they use the same tools (brew)
-*I didn't really follow this philosophy to the T. All the brew installation work is in apps.*
 
 Philosophy: Ability to install the minimum necessary
 If I'm setting up a mac but I don't intend to develop with Python, I don't need all the python tools
 Or more dramatically, if I'm not doing dev work on the mac, then I don't need all my dev deps/installations
-*Tags might be a good tool for this.*
+
+```
+Dev tag - all dev env specific tools
+Core tag - everything else I use on a mac
+ansible-playbook main.yml --ask-become-pass --tags core 
+ansible-playbook main.yml --ask-become-pass --tags dev
+
+If you want to run a specific tag, use --start-at-task:
+ansible-playbook main.yml --ask-become-pass --start-at-task "asdf"
+
+Language specific installs
+ansible-playbook main.yml --ask-become-pass --vars python,java,node
+```
 
 ---
 
@@ -75,6 +86,7 @@ Via homebrew, casks, or mac app store
 ## OSX Configuration
 ### Keyboard
 - [x] Remap the caps lock key to escape
+- [x] Don't add a period when you double space
 #### Karabiner
 - [ ] ctrl hjkl for arrow keys (still useful for builtin keyboards)
 ### Dock
@@ -112,8 +124,10 @@ https://github.com/quicksilver/Quicksilver
 Configure settings
 - [ ] Reopen tabs on close
 - [ ] Homepage: new tab
+### Slack
+- [ ] Sign into workspace
 
-
+---
 
 # Development Configuration
 ## Dotfiles
@@ -123,6 +137,8 @@ Configure settings
 - iterm2
 - git config
 - postman
+- ssh config for different keys
+- slack config
 
 ## git
 - [x] Create new ssh key for machine
@@ -146,6 +162,6 @@ Configure settings
 ### Neovim/Tmux
 
 ## Language/Tech Stack Specific
-asdf for version mgmt?
 ### Python
+- [x] Install pyenv and pyenv-virtualenv
 ### Java

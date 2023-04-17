@@ -1,18 +1,26 @@
 # Install and configure dev tools
 
+# All import* statements are pre-processed at the time playbooks are parsed.
+# All include* statements are processed as they are encountered during the execution of the playbook.
+
 ---
-- name: Install applications
-  include_tasks: "{{ yml_files }}"
-  loop:
-    - nerdfonts.yml
-    - zsh.yml
-    - git.yml
-    - vscode.yml
+- name: Install fonts
+  block:
+    - import_tasks: nerdfonts.yml
 
-    # WIP
-    # - nvim.yml
+- name: Install dev applications
+  import_tasks: brew_dev.yml
 
-    # Deprecated
-    # - oh_my_zsh.yml
-  loop_control:
-    loop_var: yml_files
+- name: Configure dev applications
+  block:
+    - import_tasks: vscode.yml
+    # - import_tasks: nvim.yml   
+
+- name: Setup languages
+  block:
+    - import_tasks: python.yml
+
+- name: Setup CLI
+  block:
+    - import_tasks: git.yml
+    - import_tasks: zsh.yml

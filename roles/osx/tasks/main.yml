@@ -3,12 +3,20 @@
 
 ---
 - name: Dock Settings
-  include_tasks: "{{ yml_files }}"
-  loop:
-    - keyboard.yml
-    - trackpad.yml
-    - display.yml
-    - dock.yml
-    - menubar.yml
-  loop_control:
-    loop_var: yml_files
+  block:
+    - import_tasks: keyboard.yml
+    - import_tasks: trackpad.yml
+    - import_tasks: display.yml
+    - import_tasks: dock.yml
+    - import_tasks: menubar.yml
+
+# - name: Dock Settings
+#   include_tasks: "{{ yml_files }}"
+#   loop:
+#     - keyboard.yml
+#     - trackpad.yml
+#     - display.yml
+#     - dock.yml
+#     - menubar.yml
+#   loop_control:
+#     loop_var: yml_files

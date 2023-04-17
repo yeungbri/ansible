@@ -27,3 +27,63 @@
     type: int
     value: 2
     state: present
+
+# defaults write "Apple Global Domain" "NSAutomaticPeriodSubstitutionEnabled" '0'
+- name: Disable automatic period insertion
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: NSAutomaticPeriodSubstitutionEnabled
+    type: int
+    value: 0
+    state: present
+
+# defaults write "Apple Global Domain" "NSAutomaticQuoteSubstitutionEnabled" '0'
+# defaults write "Apple Global Domain" "NSAutomaticDashSubstitutionEnabled" '0'
+- name: Disable smart quote (curly quotes)
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: int
+    value: 0
+    state: present
+- name: Disable smart dash (long dash instead of two short dashes)
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: NSAutomaticDashSubstitutionEnabled
+    type: int
+    value: 0
+    state: present
+
+# defaults write "Apple Global Domain" "NSUserDictionaryReplacementItems" '()'
+- name: Clear dictionary replacements
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: NSUserDictionaryReplacementItems
+    type: array
+    value: []
+    state: present
+
+# defaults write "Apple Global Domain" "WebAutomaticSpellingCorrectionEnabled" '0'
+# defaults write "Apple Global Domain" "NSAutomaticCapitalizationEnabled" '0'
+# defaults write "Apple Global Domain" "NSAutomaticSpellingCorrectionEnabled" '0'
+- name: Disable automatic spelling correction
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: WebAutomaticSpellingCorrectionEnabled
+    type: int
+    value: 0
+    state: present
+- name: Disable automatic capitalization
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: NSAutomaticCapitalizationEnabled
+    type: int
+    value: 0
+    state: present
+- name: Disable automatic spelling correction
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: int
+    value: 0
+    state: present

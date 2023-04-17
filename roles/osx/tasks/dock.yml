@@ -93,8 +93,10 @@
         pos: 3
       - name: iTerm
         path: "/Applications/iTerm.app/"
+        pos: 4
       - name: obsidian
         path: "/Applications/obsidian.app/"
+        pos: 5
       - name: Slack
         path: "/Applications/Slack.app/"
   include_role:

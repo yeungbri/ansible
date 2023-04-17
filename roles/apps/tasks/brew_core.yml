@@ -1,0 +1,29 @@
+# Core applications
+
+---
+# If you install the app manually, will break this task
+- name: Core
+  block:
+  - name: Core brews
+    community.general.homebrew:
+      update_homebrew: yes
+  - name: Core casks
+    community.general.homebrew_cask:
+      name:
+        - google-chrome
+        # - slack
+
+        # Mouse
+        - linearmouse # no mouse accel
+        - mos         # smooth scrolling
+        # Window management
+        - rectangle   # resize windows
+        - quicksilver # triggers to activate windows
+        # Menu bar
+        - hiddenbar   # clean up menu bar
+        - meetingbar  # show cal meetings, auto join
+
+        - keepingyouawake # keep computer awake
+        - licecap            # gif maker
+        - karabiner-elements # key rebinder
+      state: latest
