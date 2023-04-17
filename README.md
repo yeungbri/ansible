@@ -1,91 +1,133 @@
 # Prereqs
-Homebrew
+Install Homebrew
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
-Ansible
+
+Install Ansible
 `brew install ansible`
-Install roles/collections
+
+Install Ansible roles/collections
 `ansible-galaxy install -r requirements.yml`
 
----
-
-# Ansible
-roles make our tasks reusable
-I could just include a playbook, but you can run an entire role or break apart your setup setup into multiple roles.
-
+Run the playbook
+`ansible-playbook main.yml`
 `ansible-playbook main.yml --ask-become-pass`
 
-## Organization
-https://github.com/bradwilson/ansible-dev-pc
-Each role installs and configures a category of use cases or just one single use case.
-Each task yml file is essentially a play to install/configure a specific use case or a piece of the use case.
+---
 
-The idea is to separate out the tasks into chunks that can be easily installed/omitted.
-For example, if I choose to switch out nvim for something other editor, I can simply not include that role anymore.
-This will break down for shared dependencies.
+# Ansible Notes
+Task - Does one thing
+Play - Runs a list of Tasks
+Playbook - Contains multiple Plays
+Role - shareable/reusable playbook (almost)
+  You can call an entire role as one task, or even call roles inside of other roles
+  `ansible-galaxy init role-name`
+Collection - shareable group of modules/playbooks/roles/etc...
+Ansible Galaxy - Where you share roles and collections
+
+YAML
+Jinja Templating - all the double curly brace stuff
+
+Variables - exists on many layers, the closer to the task the higher precedence
+Templates - to generate a templated file 
+
+requirements.yml - defines role dependencies that get pulled via the ansible-galaxy command
+main.yml - the main playbook to run with all the roles
+ansible.cfg - defines which inventory file to use
+inventory - a hosts file, ansible was designed to run against multiple nodes - but we are only using it for local macos setup
+
+Each main.yml file in each role is the main "playbook" of the role. When you invoke a role, it runs that.
+
+## Improvements
+- [ ] More robust ansible tasks -> making use of checks/handlers/variables
+- [ ] Usage of tags for more targetted installs
+- [ ] Testing on a macos fresh VM
+  https://mac.getutm.app/
 
 ---
 
-Steps to setup on a new macos:
+# Project Organization
+Philosophy: Keep tasks modular around a specific use case
+Inspired by https://github.com/bradwilson/ansible-dev-pc
+Pros:
+- Makes things easy to find
+- If you stop using a tool, you can remove it and all its config tasks in one place
+  - Might want to write an uninstall task and comment out the rest of the file to deprecate though
+Cons:
+- Shared dependencies are tricky
+- Lots of extra boiler plate to separate concerns even when they use the same tools (brew)
+*I didn't really follow this philosophy to the T. All the brew installation work is in apps.*
 
-# Install applications
-(via homebrew)
+Philosophy: Ability to install the minimum necessary
+If I'm setting up a mac but I don't intend to develop with Python, I don't need all the python tools
+Or more dramatically, if I'm not doing dev work on the mac, then I don't need all my dev deps/installations
+*Tags might be a good tool for this.*
 
-# OSX
-## Keyboard
+---
+
+# Playbook Configurations
+Try to track all the changes made by the playbook here.
+
+## Install applications
+Via homebrew, casks, or mac app store
+
+## OSX Configuration
+### Keyboard
 - [x] Remap the caps lock key to escape
-## Dock
+#### Karabiner
+- [ ] ctrl hjkl for arrow keys (still useful for builtin keyboards)
+### Dock
 - [x] Order applications
 - [x] Set dock settings
-## Trackpad
+### Trackpad
 - [?] Trackpad scroll direction
 - [?] Tap to click
-## Displays
+### Displays
 - [x] Turn on Nighshift
-## Menu bar
+### Menu bar
 - [?] Always show date
 - [?] Remove spotlight icon
-## Ricing
+### Ricing
 - [ ] Install desktop backgrounds
 
-# Window Management
-## Rectangle
+## Window Management
+### Rectangle
 (manual) Enable security permissions
 - [?] Configure settings: Hide menu bar icon
-
-## Quicksilver
+### Quicksilver
 (manual) Enable security permissions
 - [ ] Setup triggers for each application
-  - [ ] See if replacing these files works:
-  https://github.com/quicksilver/Quicksilver
-  ```
-  ~/Library/Application Support/Quicksilver
-  ~/Library/Caches/Quicksilver
-  ~/Library/Preferences/com.blacktree.Quicksilver.plist
-  ```
+- [ ] See if replacing these files works:
+https://github.com/quicksilver/Quicksilver
+```
+~/Library/Application Support/Quicksilver
+~/Library/Caches/Quicksilver
+~/Library/Preferences/com.blacktree.Quicksilver.plist
+```
 
-# Browser
-## Chrome
+## Browser
+### Chrome
 - [x] Install extensions
-- [ ] Configure settings
-    Reopen tabs on close
-    Homepage: new tab
+Configure settings
+- [ ] Reopen tabs on close
+- [ ] Homepage: new tab
 
----
 
-Development
 
-# Dotfiles
+# Development Configuration
+## Dotfiles
 - [ ] yadm
+- zshrc
+- vscode settings/keybinds
+- iterm2
+- git config
+- postman
 
-# git
+## git
 - [x] Create new ssh key for machine
-- [ ] Configure global git settings - yadm?
-- [ ] Pre-commit hook?
+(manual) Add ssh key to github and/or gitlab
 
-# Terminal
-## iterm2
-- [ ] Configure iterm2 to work
-## zsh
+## Terminal
+### zsh
 - [x] Install Antigen
   Antigen is invoked inside your `~/.zshrc`
 - [x] Install plugins
@@ -94,12 +136,14 @@ Development
   2. brew install starship
   3. Add `eval "$(starship init zsh)"` to the end of your zshrc
   4. Configure starship: https://starship.rs/config/
+### iterm2
 
-# IDE
-## VSCode
-- [ ] Configure VSCode
+## IDE
+### VSCode
 - [?] Install extensions
+### Neovim/Tmux
 
-## Neovim
-- [ ] Configure Nvim
-- [ ] Setup tmux
+## Language/Tech Stack Specific
+asdf for version mgmt?
+### Python
+### Java
