@@ -1,0 +1,8 @@
+---
+- name: "Clone yadm repo"
+  shell: |
+    cd ~
+    yadm clone https://github.com/yeungbri/dotfiles.git
+
+- name: "Bootstrap yadm config files that need to be moved"
+  shell: yadm bootstrap
