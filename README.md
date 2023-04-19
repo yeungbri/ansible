@@ -165,3 +165,10 @@ Configure settings
 ### Python
 - [x] Install pyenv and pyenv-virtualenv
 ### Java
+
+---
+# Full Setup Steps
+install brew + ansible
+run ansible playbooks
+  do the yadm steps as well
+should be all configured

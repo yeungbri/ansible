@@ -29,3 +29,6 @@
 - name: Setup CLI
   block:
     - import_tasks: git.yml
+
+- name: yadm config files
+  import_tasks: yadm.yml

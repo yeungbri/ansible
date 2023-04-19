@@ -4,14 +4,15 @@
   - name: Dev brews
     community.general.homebrew:
       name:
+        - yadm      # loads dotfiles
         # CLI tools
-        - direnv # autoloads env vars per dir
+        - direnv    # autoloads env vars per dir
         - fzf
-        - bat # better cat
+        - bat       # better cat
         - fd
         # zsh
-        - antigen  # zsh plugin manager
-        - starship # zsh theme
+        - antigen   # zsh plugin manager
+        - starship  # zsh theme
         # build tools
         - cloc
         - cmake
