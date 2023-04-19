@@ -1,19 +1,23 @@
 # For starship
 
 ---
-- name: ensure fonts directory
+- name: Ensure fonts directory
   file:
-    path: "{{ lookup('env', 'HOME') }}/.fonts"
+    path: "{{ lookup('env', 'HOME') }}/Library/Fonts"
     state: directory
 
 - name: Hack exists
-  shell: "ls {{ lookup('env', 'HOME') }}/.fonts/Hack*Nerd*Font*Complete*"
+  shell: "ls {{ lookup('env', 'HOME') }}/Library/Fonts/Hack*Nerd*Font*Complete*"
   register: hack_exists
   ignore_errors: true
 
+# Need to resolve conflicts in font book.
+# TODO: download to tmp, only copy over the fonts you want, delete tmp
 - name: Download Hack
   when: hack_exists is failed
   ansible.builtin.unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-    dest: "{{ lookup('env', 'HOME') }}/.fonts/"
+    dest: "{{ lookup('env', 'HOME') }}/Library/Fonts/"
     remote_src: yes
+
+# Have to enable to font in iterm2 for starship to work correctly -> yadm

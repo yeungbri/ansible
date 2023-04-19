@@ -2,6 +2,15 @@
 # https://github.com/smudge/nightlight
 
 ---
+# defaults write "Apple Global Domain" "NSQuitAlwaysKeepsWindows" '1'
+- name: Disable automatic capitalization
+  community.general.osx_defaults:
+    domain: "Apple Global Domain"
+    key: NSQuitAlwaysKeepsWindows
+    type: int
+    value: 1
+    state: present
+
 - name: Brew install nightshift cli
   community.general.homebrew:
     name:

@@ -16,6 +16,9 @@
         - cloc
         - cmake
         - coreutils
+        # vim
+        - neovim
+        - tmux
       state: latest
       update_homebrew: yes
   - name: Dev casks

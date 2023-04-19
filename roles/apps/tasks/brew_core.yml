@@ -23,7 +23,7 @@
         - hiddenbar   # clean up menu bar
         - meetingbar  # show cal meetings, auto join
 
-        - keepingyouawake # keep computer awake
+        - keepingyouawake    # keep computer awake
         - licecap            # gif maker
         - karabiner-elements # key rebinder
       state: latest

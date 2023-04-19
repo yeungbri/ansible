@@ -26,8 +26,8 @@
     # ansible-playbook main.yml --start-at-task "Setup developer environment"
     - name: Setup developer environment
       # Pass in langs via cli: ansible-playbook main.yml --tags dev --skip-tags install --extra-vars "langs=[python,java]"
-      # vars:
-      #   langs:
+      vars:
+        langs: []
       #     - java
       #     - python
       include_role:
