@@ -33,3 +33,7 @@
     domain: com.apple.Spotlight
     key: "NSStatusItem Visible Item-0"
     state: absent
+
+# defaults write "com.apple.controlcenter" "NSStatusItem Preferred Position Bluetooth" '306'
+# defaults write "com.apple.controlcenter" "NSStatusItem Visible Bluetooth" '1'
+# defaults write "com.apple.controlcenter" "NSStatusItem Visible Item-6" '0'

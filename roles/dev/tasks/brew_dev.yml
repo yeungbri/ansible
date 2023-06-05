@@ -20,6 +20,7 @@
         # vim
         - neovim
         - tmux
+        - kubectx
       state: latest
       update_homebrew: yes
   - name: Dev casks
@@ -29,4 +30,5 @@
         - visual-studio-code
         - obsidian
         - postman
+        - karabiner-elements
       state: latest
